@@ -71,7 +71,7 @@ extension Data {
 /// Controller class with static functions for bring information from the model to the views.
 class ServerUtils {
     
-    static let serverUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=43.074761&lon=-89.3837613&exclude=minutely,daily,alerts&units=imperial&appid=d765be8f03ebc87aaddd1cdf8814e9f8";
+    static let serverUrl = MyVariables.address
     
     /// Gets all the posts in the db
     /// - Parameter returnWith: Asychronous Callback
