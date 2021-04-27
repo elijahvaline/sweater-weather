@@ -6,9 +6,13 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct ContentView: View {
+    
+    
     @State var temp:Double = 0.0
+    @ObservedObject private var locationManager = LocationManager()
     
     var body: some View {
         GeometryReader { geometry in
@@ -66,9 +70,12 @@ struct ContentView: View {
     
     func reload(){
         
-       
+        let coor = self.locationManager.location != nil ?
+            self.locationManager.location!.coordinate :
+            CLLocationCoordinate2D()
+        
             
-            ServerUtils.getWeather(returnWith:  { response, success in
+        ServerUtils.getWeather(laty:coor.latitude, lony:coor.longitude, returnWith:  { response, success in
                 if (!success) {
                     
                     // Show error UI here

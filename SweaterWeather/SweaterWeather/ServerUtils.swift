@@ -71,13 +71,22 @@ extension Data {
 /// Controller class with static functions for bring information from the model to the views.
 class ServerUtils {
     
-    static let serverUrl = MyVariables.address
+    static func getAddress(lat:Double, lon:Double) -> String {
+        
+        var address = MyVariables.starter + String(lat) + MyVariables.next + String(lon) + MyVariables.finally
+        print(address)
+        print("xxxxxX")
+        return address
+    }
+    
+//    static let serverUrl = getAddress(15.0, 20.0)
     
     /// Gets all the posts in the db
     /// - Parameter returnWith: Asychronous Callback
     /// - Returns: The array of post objects and success boolean
-    static func getWeather(returnWith: @escaping (weather?, Bool)->()) {
+    static func getWeather(laty:Double, lony:Double, returnWith: @escaping (weather?, Bool)->()) {
         
+        let serverUrl = getAddress(lat:laty , lon: lony)
         let session = URLSession.shared
         let decoder = JSONDecoder()
         
