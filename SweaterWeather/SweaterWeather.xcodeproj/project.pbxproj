@@ -14,6 +14,7 @@
 		B61CC74D2638BE1D00215015 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61CC74C2638BE1D00215015 /* Credentials.swift */; };
 		B61CC74F2638C41E00215015 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61CC74E2638C41E00215015 /* LocationManager.swift */; };
 		B63419B3262CEC45000F4BB5 /* ServerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63419B2262CEC45000F4BB5 /* ServerUtils.swift */; };
+		B6ED2660263A0F76005FEA5C /* SweaterFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ED265F263A0F76005FEA5C /* SweaterFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		B61CC74C2638BE1D00215015 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		B61CC74E2638C41E00215015 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		B63419B2262CEC45000F4BB5 /* ServerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerUtils.swift; sourceTree = "<group>"; };
+		B6ED265F263A0F76005FEA5C /* SweaterFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweaterFunctions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				B63419B2262CEC45000F4BB5 /* ServerUtils.swift */,
 				B61CC74C2638BE1D00215015 /* Credentials.swift */,
 				B61CC74E2638C41E00215015 /* LocationManager.swift */,
+				B6ED265F263A0F76005FEA5C /* SweaterFunctions.swift */,
 			);
 			path = SweaterWeather;
 			sourceTree = "<group>";
@@ -150,6 +153,7 @@
 				B602E0BC262C8C830080F4F0 /* ContentView.swift in Sources */,
 				B602E0BA262C8C830080F4F0 /* SweaterWeatherApp.swift in Sources */,
 				B61CC74F2638C41E00215015 /* LocationManager.swift in Sources */,
+				B6ED2660263A0F76005FEA5C /* SweaterFunctions.swift in Sources */,
 				B63419B3262CEC45000F4BB5 /* ServerUtils.swift in Sources */,
 				B61CC74D2638BE1D00215015 /* Credentials.swift in Sources */,
 			);

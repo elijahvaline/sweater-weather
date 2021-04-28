@@ -12,6 +12,7 @@ struct ContentView: View {
     
     
     @State var temp:Double = 0.0
+    @State var sweaterFactor:Int = 0
     @ObservedObject private var locationManager = LocationManager()
     
     var body: some View {
@@ -42,7 +43,7 @@ struct ContentView: View {
                         .gradientRec(colors: [Color("MainColor1"), Color("MainColor2")])
                         .foregroundColor(.white)
                         .shadow(radius: 3 )
-                    Text("The Temperature is: " + String(temp))
+                    Text("Today's sweater factor is: " + String(sweaterFactor))
                         .font(.system(size: 25))
                         .fontWeight(.semibold)
                         .foregroundColor(Color.white)
@@ -62,6 +63,9 @@ struct ContentView: View {
 
                
             }.padding(.leading, geometry.size.width * 0.05)
+            .onAppear(){
+                reload()
+            }
             
             
         
@@ -84,7 +88,7 @@ struct ContentView: View {
                 }
                 
                 let totalWeather:weather = response!
-                temp = totalWeather.current.temp
+                sweaterFactor = SweaterFunctions.sweaterFactor(currentWeather: totalWeather)
             
                 
                 // Cant modify state variable directly multiple times without swiftui class
