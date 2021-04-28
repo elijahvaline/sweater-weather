@@ -15,6 +15,8 @@
 		B61CC74F2638C41E00215015 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61CC74E2638C41E00215015 /* LocationManager.swift */; };
 		B63419B3262CEC45000F4BB5 /* ServerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63419B2262CEC45000F4BB5 /* ServerUtils.swift */; };
 		B6ED2660263A0F76005FEA5C /* SweaterFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ED265F263A0F76005FEA5C /* SweaterFunctions.swift */; };
+		B6ED2662263A1B31005FEA5C /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ED2661263A1B30005FEA5C /* ActivityIndicatorView.swift */; };
+		B6ED2668263A1B93005FEA5C /* ArcsIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ED2667263A1B93005FEA5C /* ArcsIndicatorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		B61CC74E2638C41E00215015 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		B63419B2262CEC45000F4BB5 /* ServerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerUtils.swift; sourceTree = "<group>"; };
 		B6ED265F263A0F76005FEA5C /* SweaterFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweaterFunctions.swift; sourceTree = "<group>"; };
+		B6ED2661263A1B30005FEA5C /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
+		B6ED2667263A1B93005FEA5C /* ArcsIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcsIndicatorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,8 @@
 				B63419B2262CEC45000F4BB5 /* ServerUtils.swift */,
 				B61CC74C2638BE1D00215015 /* Credentials.swift */,
 				B61CC74E2638C41E00215015 /* LocationManager.swift */,
+				B6ED2661263A1B30005FEA5C /* ActivityIndicatorView.swift */,
+				B6ED2667263A1B93005FEA5C /* ArcsIndicatorView.swift */,
 				B6ED265F263A0F76005FEA5C /* SweaterFunctions.swift */,
 			);
 			path = SweaterWeather;
@@ -153,9 +159,11 @@
 				B602E0BC262C8C830080F4F0 /* ContentView.swift in Sources */,
 				B602E0BA262C8C830080F4F0 /* SweaterWeatherApp.swift in Sources */,
 				B61CC74F2638C41E00215015 /* LocationManager.swift in Sources */,
+				B6ED2668263A1B93005FEA5C /* ArcsIndicatorView.swift in Sources */,
 				B6ED2660263A0F76005FEA5C /* SweaterFunctions.swift in Sources */,
 				B63419B3262CEC45000F4BB5 /* ServerUtils.swift in Sources */,
 				B61CC74D2638BE1D00215015 /* Credentials.swift in Sources */,
+				B6ED2662263A1B31005FEA5C /* ActivityIndicatorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
