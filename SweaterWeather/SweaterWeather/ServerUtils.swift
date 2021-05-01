@@ -73,7 +73,7 @@ class ServerUtils {
     
     static func getAddress(lat:Double, lon:Double) -> String {
         
-        var address = MyVariables.starter + String(lat) + MyVariables.next + String(lon) + MyVariables.finally
+        let address = MyVariables.starter + String(lat) + MyVariables.next + String(lon) + MyVariables.finally
         print(address)
         print("xxxxxX")
         return address

@@ -12,7 +12,7 @@ class SweaterFunctions {
     static func sweaterFactor(currentWeather:weather) -> Int {
         var sweaterFactor = 0.0
         for n in 0...11 {
-            var current:hourWeather = currentWeather.hourly[n]
+            let current:hourWeather = currentWeather.hourly[n]
             sweaterFactor += current.temp
             sweaterFactor -= current.wind_speed * 0.5
             sweaterFactor += 10.0-(10.0*(Double(current.clouds) * 0.01))

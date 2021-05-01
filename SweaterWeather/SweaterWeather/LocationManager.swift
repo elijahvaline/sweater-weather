@@ -62,6 +62,9 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate
                               locationAllowed = true
                               self.location =  manager.location
                               break;
+                            
+                            default:
+                                print("default")
                         }
     }
 

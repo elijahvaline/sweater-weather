@@ -17,6 +17,7 @@
 		B6ED2660263A0F76005FEA5C /* SweaterFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ED265F263A0F76005FEA5C /* SweaterFunctions.swift */; };
 		B6ED2662263A1B31005FEA5C /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ED2661263A1B30005FEA5C /* ActivityIndicatorView.swift */; };
 		B6ED2668263A1B93005FEA5C /* ArcsIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ED2667263A1B93005FEA5C /* ArcsIndicatorView.swift */; };
+		B6FABD4C263E05BE008B89F5 /* CircleProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FABD4B263E05BE008B89F5 /* CircleProgress.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		B6ED265F263A0F76005FEA5C /* SweaterFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweaterFunctions.swift; sourceTree = "<group>"; };
 		B6ED2661263A1B30005FEA5C /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		B6ED2667263A1B93005FEA5C /* ArcsIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcsIndicatorView.swift; sourceTree = "<group>"; };
+		B6FABD4B263E05BE008B89F5 /* CircleProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgress.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				B6ED2661263A1B30005FEA5C /* ActivityIndicatorView.swift */,
 				B6ED2667263A1B93005FEA5C /* ArcsIndicatorView.swift */,
 				B6ED265F263A0F76005FEA5C /* SweaterFunctions.swift */,
+				B6FABD4B263E05BE008B89F5 /* CircleProgress.swift */,
 			);
 			path = SweaterWeather;
 			sourceTree = "<group>";
@@ -161,6 +164,7 @@
 				B61CC74F2638C41E00215015 /* LocationManager.swift in Sources */,
 				B6ED2668263A1B93005FEA5C /* ArcsIndicatorView.swift in Sources */,
 				B6ED2660263A0F76005FEA5C /* SweaterFunctions.swift in Sources */,
+				B6FABD4C263E05BE008B89F5 /* CircleProgress.swift in Sources */,
 				B63419B3262CEC45000F4BB5 /* ServerUtils.swift in Sources */,
 				B61CC74D2638BE1D00215015 /* Credentials.swift in Sources */,
 				B6ED2662263A1B31005FEA5C /* ActivityIndicatorView.swift in Sources */,
