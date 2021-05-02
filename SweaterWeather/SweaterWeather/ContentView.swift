@@ -25,118 +25,103 @@ struct ContentView: View {
         GeometryReader { geometry in
             
             ZStack{
-                ScrollView {
-                    
-                    VStack(spacing: 10){
-                        
-                        
-                        ZStack{
-                            Image("background-1")
-                                .frame(width: geometry.size.width)
-                                
-                            VStack{
-                                Text("You should wear a sweater today")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 35))
+                
+                        VStack(spacing: 10){
+                            
+                            Image(systemName: "smoke.fill")
+                                .gradientForeground(colors: [Color("MainColor1"),Color("MainColor2")])
+                                .font(.system(size: 60))
+                            
+                            HStack{
+                                Text("Dashboard")
+                                    .font(.title)
                                     .fontWeight(.semibold)
                                     .multilineTextAlignment(.leading)
-                                    .padding(.top, 40)
-                                    .frame(width: geometry.size.width)
-                                
+                                    .frame(alignment: .leading)
+                                    .padding(.leading, 20)
+                                    
                                 Spacer()
                             }
-                        }
-                        
-                            
-                        
-                        ZStack{
-                            CircleProgress(progress: $progress, color: Color("MainColor1"))
-                                .frame(width: geometry.size.width*0.6, height: geometry.size.width*0.5)
-                            
-                            VStack{
-                                Text(String(sweaterFactor))
-                                    .font(.system(size: 70))
-                                    .fontWeight(.semibold)
-                                    .frame(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                                    .foregroundColor(.black)
-                                //                                .gradientForeground(colors: [Color("MainColor1"),Color("MainColor2")])
-                                Text("Sweater Factor")
-                                    .fontWeight(.semibold)
-                                    .foregroundColor(.black)
-                                //                                .gradientForeground(colors: [Color("MainColor1"),Color("MainColor2")])
+                            ZStack{
                                 
-                            }
+//                                RoundedRectangle(cornerRadius: 20)
+//                                    .gradientRec(colors: [Color("MainColor1"), Color("MainColor2")])
+                                    
+                                
+                                RoundedRectangle(cornerRadius: 20)
+                                    .foregroundColor(.white)
+//                                    .padding(.all, 2)
+                                VStack{
+                                    
+                                    Text("Yes!").fontWeight(.heavy)
+
+                                        .font(/*@START_MENU_TOKEN@*/.largeTitle/*@END_MENU_TOKEN@*/)
+                                    
+                                    Text("You should wear a sweater today!")
+                                        .font(.system(size: 23))
+
+                                    
+                                    ZStack{
+
+                                        CircleProgress(progress: $progress, color: Color("MainColor1"))
+                                            .frame(width: geometry.size.width*0.6, height: geometry.size.width*0.5)
+                                        
+                                        VStack{
+                                            Text(String(sweaterFactor))
+                                                .font(.system(size: 70))
+                                                .fontWeight(.semibold)
+                                                .frame(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                                .foregroundColor(.black)
+                                            //                                .gradientForeground(colors: [Color("MainColor1"),Color("MainColor2")])
+                                            Text("Sweater Factor")
+                                                .fontWeight(.semibold)
+                                                .foregroundColor(.black)
+                                        }
+                                        
+                                    }
+                                    
+                                    .padding(.bottom, 10)
+                                    .padding(.top, 20)
+                                }
+                                
+                            
+          
+                            }.frame(width:geometry.size.width*0.9, height: 350)
+                            .shadow(color: Color.black.opacity(0.15), radius: 5)
                             
                             
+                            Spacer()
                             
-                            
-                        }.padding(.bottom, 10)
-                        .padding(.top, 20)
                         
-                        
-                        
-                        
-                        //                        .gradientForeground(colors: [Color("MainColor1"),Color("MainColor2")])
-                        //                    ZStack{
-                        //
-                        //                        RoundedRectangle(cornerRadius: 20)
-                        //                            .gradientRec(colors: [Color("MainColor1"), Color("MainColor2")])
-                        //                            .foregroundColor(.white)
-                        //    //                        .shadow(radius: 3 )
-                        //                        VStack{
-                        //                            Text(String(sweaterFactor))
-                        //                                .font(.system(size: 50))
-                        //                                .foregroundColor(.white)
-                        //                                .fontWeight(.semibold)
-                        //                                .frame(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                        //
-                        //                            Text("Today's sweater factor")
-                        //                                .font(.system(size: 25))
-                        //
-                        //                                .foregroundColor(Color.white)
-                        //                                .frame(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                        //                        }
-                        //
-                        //
-                        //
-                        //                    }
-                        //                    .frame(width: geometry.size.width*0.9, height: 150, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                        
-                        
-                        
-                        Spacer()
-                        
-                        
-                    }
-                }
-                //                .padding(.leading, geometry.size.width * 0.05)
+                    
+                    
+                        }.frame(width: geometry.size.width, height: geometry.size.height)
+                        .padding(.top, 15)
                 
-                Rectangle()
-                    .foregroundColor(.white)
-                    .frame(width: geometry.size.width, height: geometry.size.height)
-                    .isHidden(!loading)
-                    .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                
-                ActivityIndicatorView(isVisible: $loading)
-                    .frame(width: geometry.size.height*0.1, height: geometry.size.height*0.1)
-                    .foregroundColor(Color("MainColor1"))
+//
+//                Rectangle()
+//                    .foregroundColor(.white)
+//                    .frame(width: geometry.size.width, height: geometry.size.height)
+//                    .isHidden(!loading)
+//                    .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+//
+//                ActivityIndicatorView(isVisible: $loading)
+//                    .frame(width: geometry.size.height*0.1, height: geometry.size.height*0.1)
+//                    .foregroundColor(Color("MainColor1"))
             }
-            
+//            .padding(.vertical, 30.0)
+//            .background(Color(UIColor.systemGray6)).edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             .onReceive(locationManager.$location, perform: { newLocation in
                 if let newLocation = newLocation {
                     reload(location: newLocation.coordinate)
                 }
             })
             
-            //            .onAppear(){
-            //                reload(location: newLocation.coordinate)
-            //            }
             
-            
-            
-            
-        }.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+        }
     }
+    
+    
     
     
     func reload(location: CLLocationCoordinate2D){
@@ -223,4 +208,3 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
-
