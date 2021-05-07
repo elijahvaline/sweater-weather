@@ -19,84 +19,171 @@ struct ContentView: View {
     @State private var blurAmount: CGFloat = 5
     @State var progress:Float = 1.0
     @ObservedObject private var locationManager = LocationManager()
+    @ObservedObject private var settings = Settings()
+    @State var sweater:String = ""
     
     
     var body: some View {
         GeometryReader { geometry in
             
             ZStack{
+                        Color("Grey")
+                            .edgesIgnoringSafeArea(.all)
                 
-                        VStack(spacing: 10){
+                        VStack(spacing: 5){
                             
                             Image(systemName: "smoke.fill")
                                 .gradientForeground(colors: [Color("MainColor1"),Color("MainColor2")])
-                                .font(.system(size: 60))
+                                .font(.system(size: 35))
                             
-                            HStack{
-                                Text("Dashboard")
-                                    .font(.title)
-                                    .fontWeight(.semibold)
-                                    .multilineTextAlignment(.leading)
-                                    .frame(alignment: .leading)
-                                    .padding(.leading, 20)
-                                    
-                                Spacer()
-                            }
-                            ZStack{
+                            ScrollView {
                                 
-//                                RoundedRectangle(cornerRadius: 20)
-//                                    .gradientRec(colors: [Color("MainColor1"), Color("MainColor2")])
-                                    
                                 
-                                RoundedRectangle(cornerRadius: 20)
-                                    .foregroundColor(.white)
-//                                    .padding(.all, 2)
-                                VStack{
-                                    
-                                    Text("Yes!").fontWeight(.heavy)
-
-                                        .font(/*@START_MENU_TOKEN@*/.largeTitle/*@END_MENU_TOKEN@*/)
-                                    
-                                    Text("You should wear a sweater today!")
-                                        .font(.system(size: 23))
-
-                                    
-                                    ZStack{
-
-                                        CircleProgress(progress: $progress, color: Color("MainColor1"))
-                                            .frame(width: geometry.size.width*0.6, height: geometry.size.width*0.5)
+                                    GeometryReader { geo in
+                                    VStack{
                                         
-                                        VStack{
-                                            Text(String(sweaterFactor))
-                                                .font(.system(size: 70))
-                                                .fontWeight(.semibold)
-                                                .frame(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                                                .foregroundColor(.black)
-                                            //                                .gradientForeground(colors: [Color("MainColor1"),Color("MainColor2")])
-                                            Text("Sweater Factor")
-                                                .fontWeight(.semibold)
-                                                .foregroundColor(.black)
+        //
+                                        HStack{
+                                            Spacer()
+                                            Text(self.sweater)
+                                                
+                                                .font(.system(size: max(1, (25 - abs(60-(geo.frame(in: .global).midY/1.5))))))
+                                                .fontWeight(.medium)
+                                                .padding(.bottom, 50)
+                                                .padding(.top, 35)
+                                                .opacity(1.0 - (0.1 * Double(20 - geo.frame(in: .global).midY)))
+                                              
+                                            Spacer()
                                         }
+                                            
+                                            
+        //                                }
+                                            
+                                                
+                                            ZStack{
+                                                RoundedRectangle(cornerRadius: 15)
+                                                    .gradientRec(start: .topTrailing, end: .bottomLeading, colors: [Color("MainColor1"), Color("MainColor2")])
+                                                    .frame(width: geometry.size.width*0.9, height: 200)
+                                                
+                                                
+                                                HStack{
+                                                    
+                                                    VStack{
+                                                        
+                                                        
+                                                        Text(String(sweaterFactor))
+                                                            .font(.system(size: 70))
+                                                            .fontWeight(.semibold)
+                                                            .frame(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                                            .foregroundColor(.white)
+                                                       
+                                                        Text("Sweater Factor")
+                                                            .fontWeight(.semibold)
+                                                            .foregroundColor(.white)
+                                                    }.frame(width: 150)
+                                                    
+                                                    
+                                                    RoundedRectangle(cornerRadius: 1)
+                                                        .frame(width: 3, height: 150)
+                                                        .foregroundColor(.white)
+                                                    
+                                                    VStack{
+                                                        Text(String(sweaterFactor - settings.sweaterThreshhold))
+                                                            .font(.system(size: 70))
+                                                            .fontWeight(.semibold)
+                                                            .frame(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                                            .foregroundColor(.white)
+                                                        //                                .gradientForeground(colors: [Color("MainColor1"),Color("MainColor2")])
+                                                        Text(" Differential ")
+                                                            .fontWeight(.semibold)
+                                                            .foregroundColor(.white)
+                                                    }.frame(width: 150)
+                                                }
+                                            }
                                         
+                                        
+                                        ZStack{
+                                            RoundedRectangle(cornerRadius: 15)
+                                                .gradientRec(start:.topLeading, end: .bottomTrailing, colors: [Color("MainColor2"), Color("MainColor1")])
+                                                .frame(width: geometry.size.width*0.9, height: 400)
+                                            
+                                            
+                                            
+                                                
+                                                VStack{
+                                                    
+                                                    
+                                                    Text(String(settings.sweaterThreshhold))
+                                                        .font(.system(size: 70))
+                                                        .fontWeight(.semibold)
+                                                        .frame(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                                        .foregroundColor(.white)
+                                                   
+                                                    Text("Your Sweater Threshold")
+                                                        .fontWeight(.semibold)
+                                                        .foregroundColor(.white)
+                                                    
+                                                    RoundedRectangle(cornerRadius: 1)
+                                                        .frame(width: geometry.size.width * 0.8, height: 3)
+                                                        .foregroundColor(.white)
+                                                        .padding(.vertical, 30)
+                                                    
+                                                    Text("How was your recommendation today?")
+                                                        .foregroundColor(.white)
+                                                        .fontWeight(.semibold)
+                                                    HStack(spacing: 30){
+                                                        
+                                                        Button(action: {
+                                                            settings.decrement()
+                                                            }) {
+                                                            ZStack{
+                                                                Circle()
+                                                                    .foregroundColor(.white)
+                                                                    .frame(width: 75, height:75)
+                                                                Text("🥵")
+                                                                    .font(.system(size: 40))
+                                                            }
+                                                            
+                                                        }
+                                                        
+                                                        RoundedRectangle(cornerRadius: 1)
+                                                            .foregroundColor(.white)
+                                                            .frame(width: 3, height: 100)
+                                                        Button(action: {
+                                                            settings.increment()
+                                                        }) {
+                                                            ZStack{
+                                                                Circle()
+                                                                    .foregroundColor(.white)
+                                                                    .frame(width: 75, height:75)
+                                                                Text("🥶")
+                                                                    .font(.system(size: 40))
+                                                            }
+                                                            
+                                                        }
+                                                    }
+                                                        
+                                                }
+                                                
+                                              
+                                                
+                                            
+                                        }.padding(.top, 10)
+
+                                            Spacer()
+                                            
+                                
+                                    }
                                     }
                                     
-                                    .padding(.bottom, 10)
-                                    .padding(.top, 20)
-                                }
+                               
+                                    
                                 
                             
-          
-                            }.frame(width:geometry.size.width*0.9, height: 350)
-                            .shadow(color: Color.black.opacity(0.15), radius: 5)
-                            
-                            
-                            Spacer()
-                            
+                            }
                         
-                    
-                    
+                            
                         }.frame(width: geometry.size.width, height: geometry.size.height)
-                        .padding(.top, 15)
                 
 //
 //                Rectangle()
@@ -110,7 +197,7 @@ struct ContentView: View {
 //                    .foregroundColor(Color("MainColor1"))
             }
 //            .padding(.vertical, 30.0)
-//            .background(Color(UIColor.systemGray6)).edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+//            .background(Color("Grey")).edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             .onReceive(locationManager.$location, perform: { newLocation in
                 if let newLocation = newLocation {
                     reload(location: newLocation.coordinate)
@@ -144,6 +231,14 @@ struct ContentView: View {
             lon = totalWeather.lon
             lat = totalWeather.lat
             
+            if (sweaterFactor <= settings.sweaterThreshhold){
+                self.sweater = "Wear a sweater."
+            
+            }
+            else{
+                self.sweater = "Don't wear a sweater."
+            }
+            
             // Cant modify state variable directly multiple times without swiftui class
             
             
@@ -159,8 +254,8 @@ struct ContentView: View {
 
 extension Shape  {
     
-    public func gradientRec(colors: [Color]) -> some View {
-        self.fill(LinearGradient(gradient: .init(colors: colors), startPoint: .topLeading, endPoint: .bottomTrailing))
+    public func gradientRec(start:UnitPoint, end: UnitPoint, colors: [Color]) -> some View {
+        self.fill(LinearGradient(gradient: .init(colors: colors), startPoint: start, endPoint:end))
         
     }
 }
