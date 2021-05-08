@@ -22,11 +22,17 @@ struct ContentView: View {
     @ObservedObject private var settings = Settings()
     @State var sweater:String = ""
     @State var responsey = true
+    @State var scale:CGFloat = 1.0
+    @State var white = true
+
     
     
     var body: some View {
-        GeometryReader { geometry in
+        ZStack{
             
+        
+        GeometryReader { geometry in
+    
             ZStack{
                 Color("Grey")
                     .edgesIgnoringSafeArea(.all)
@@ -121,7 +127,7 @@ struct ContentView: View {
                                         .gradientRec(start:.topLeading, end: .bottomTrailing, colors: [Color("MainColor2"), Color("MainColor1")])
                                         .frame(width: geometry.size.width*0.9, height: 400)
                                         .shadow(color: Color.black.opacity(0.2), radius: 5.0)
-
+                                    
                                     VStack{
                                         
                                         
@@ -160,67 +166,67 @@ struct ContentView: View {
                                                     .frame(width: geometry.size.width * 0.8)
                                                     .isHidden(!responsey)
                                                 
+                                                
+                                                
+                                                
+                                                HStack(spacing: 20){
                                                     
                                                     
-                                                    
-                                                    HStack(spacing: 20){
-                                                        
-                                                        
-                                                        Button(action: {
-                                                            settings.decrement()
-                                                            settings.dater()
-                                                            responsey = false
-                                                        }) {
-                                                            ZStack{
-                                                                Circle()
-                                                                    .foregroundColor(.white)
-                                                                    .frame(width: 75, height:75)
-                                                                Text("🥵")
-                                                                    .font(.system(size: 40))
-                                                            }
-                                                            
+                                                    Button(action: {
+                                                        settings.decrement()
+                                                        settings.dater()
+                                                        responsey = false
+                                                    }) {
+                                                        ZStack{
+                                                            Circle()
+                                                                .foregroundColor(.white)
+                                                                .frame(width: 75, height:75)
+                                                            Text("🥵")
+                                                                .font(.system(size: 40))
                                                         }
                                                         
-                                                        RoundedRectangle(cornerRadius: 1)
-                                                            .foregroundColor(.white)
-                                                            .frame(width: 3, height: 100)
-                                                        
-                                                        Button(action: {
-                                                            settings.dater()
-                                                            responsey = false
-                                                        }) {
-                                                            ZStack{
-                                                                Circle()
-                                                                    .foregroundColor(.white)
-                                                                    .frame(width: 75, height:75)
-                                                                Text("🙂")
-                                                                    .font(.system(size: 40))
-                                                            }
-                                                            
-                                                        }
-                                                        
-                                                        RoundedRectangle(cornerRadius: 1)
-                                                            .foregroundColor(.white)
-                                                            .frame(width: 3, height: 100)
-                                                        Button(action: {
-                                                            settings.increment()
-                                                            settings.dater()
-                                                            responsey = false
-                                                        }) {
-                                                            ZStack{
-                                                                Circle()
-                                                                    .foregroundColor(.white)
-                                                                    .frame(width: 75, height:75)
-                                                                Text("🥶")
-                                                                    .font(.system(size: 40))
-                                                            }
-                                                            
-                                                        }
-                                                    }.isHidden(!responsey)
+                                                    }
                                                     
+                                                    RoundedRectangle(cornerRadius: 1)
+                                                        .foregroundColor(.white)
+                                                        .frame(width: 3, height: 100)
+                                                    
+                                                    Button(action: {
+                                                        settings.dater()
+                                                        responsey = false
+                                                    }) {
+                                                        ZStack{
+                                                            Circle()
+                                                                .foregroundColor(.white)
+                                                                .frame(width: 75, height:75)
+                                                            Text("🙂")
+                                                                .font(.system(size: 40))
+                                                        }
+                                                        
+                                                    }
+                                                    
+                                                    RoundedRectangle(cornerRadius: 1)
+                                                        .foregroundColor(.white)
+                                                        .frame(width: 3, height: 100)
+                                                    Button(action: {
+                                                        settings.increment()
+                                                        settings.dater()
+                                                        responsey = false
+                                                    }) {
+                                                        ZStack{
+                                                            Circle()
+                                                                .foregroundColor(.white)
+                                                                .frame(width: 75, height:75)
+                                                            Text("🥶")
+                                                                .font(.system(size: 40))
+                                                        }
+                                                        
+                                                    }
+                                                }.isHidden(!responsey)
+                                                
                                                 
                                             }
-                                        
+                                            
                                         }
                                         
                                         
@@ -232,36 +238,33 @@ struct ContentView: View {
                                 }.padding(.top, 10)
                                 
                                 
-//                                Divider().padding(.vertical, 20)
-//
-//                                HStack(spacing: geometry.size.width * 0.05){
-//
-//                                    ZStack{
-//                                        RoundedRectangle(cornerRadius: 15.0)
-//                                            .foregroundColor(Color("Foreground"))
-//                                            .shadow(color: Color.black.opacity(0.1), radius: 5.0)
-//
-//
-//                                    }.frame(width: geometry.size.width * 0.425, height: geometry.size.width * 0.425)
-//
-//                                    ZStack{
-//                                        RoundedRectangle(cornerRadius: 15.0)
-//                                            .foregroundColor(Color("Foreground"))
-//                                            .shadow(color: Color.black.opacity(0.1), radius: 5.0)
-//
-//                                    }.frame(width: geometry.size.width * 0.425, height: geometry.size.width * 0.425)
-//
-//
-//
-//
-//
-//
-//                                }.padding(.top, 10)
+                                //                                Divider().padding(.vertical, 20)
+                                //
+                                //                                HStack(spacing: geometry.size.width * 0.05){
+                                //
+                                //                                    ZStack{
+                                //                                        RoundedRectangle(cornerRadius: 15.0)
+                                //                                            .foregroundColor(Color("Foreground"))
+                                //                                            .shadow(color: Color.black.opacity(0.1), radius: 5.0)
+                                //
+                                //
+                                //                                    }.frame(width: geometry.size.width * 0.425, height: geometry.size.width * 0.425)
+                                //
+                                //                                    ZStack{
+                                //                                        RoundedRectangle(cornerRadius: 15.0)
+                                //                                            .foregroundColor(Color("Foreground"))
+                                //                                            .shadow(color: Color.black.opacity(0.1), radius: 5.0)
+                                //
+                                //                                    }.frame(width: geometry.size.width * 0.425, height: geometry.size.width * 0.425)
+                                //
+                                //
+                                //
+                                //
+                                //
+                                //
+                                //                                }.padding(.top, 10)
                                 
-                                
-                                
-                                
-                                
+
                                 // Add stuff to the main scroll view here
                                 
                                 Spacer()
@@ -279,26 +282,40 @@ struct ContentView: View {
                     
                 }.frame(width: geometry.size.width, height: geometry.size.height)
                 
-                //
-                //                Rectangle()
-                //                    .foregroundColor(.white)
-                //                    .frame(width: geometry.size.width, height: geometry.size.height)
-                //                    .isHidden(!loading)
-                //                    .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                //
-                //                ActivityIndicatorView(isVisible: $loading)
-                //                    .frame(width: geometry.size.height*0.1, height: geometry.size.height*0.1)
-                //                    .foregroundColor(Color("MainColor1"))
+//                Rectangle()
+//                    .frame(width: geometry.size.width, height: geometry.size.height)
+                
+               
+                
+                LinearGradient(gradient: Gradient(colors: [Color("MainColor1"), Color("MainColor2")]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                    .ignoresSafeArea()
+
+                    .isHidden(!loading)
+
+                Image(systemName: "smoke.fill")
+                    .resizable()
+                    .foregroundColor(.white)
+                    .frame(width: 200 * scale, height: 150 * scale)
+                    .scaleEffect(scale)
+                    .isHidden(!loading)
+//
+//
+             
             }
-            //            .padding(.vertical, 30.0)
-            //            .background(Color("Grey")).edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             .onReceive(locationManager.$location, perform: { newLocation in
                 if let newLocation = newLocation {
                     reload(location: newLocation.coordinate)
                 }
+                
+               
             })
             
+        
+        
             
+            
+            
+          }
         }
     }
     
@@ -307,7 +324,7 @@ struct ContentView: View {
     
     func reload(location: CLLocationCoordinate2D){
         
-   
+        
         ServerUtils.getWeather(laty:location.latitude, lony:location.longitude, returnWith:  { response, success in
             if (!success) {
                 
@@ -343,10 +360,19 @@ struct ContentView: View {
             
             
             DispatchQueue.main.asyncAfter(deadline: .now()) {
-                
-                loading = false
-                
-                
+//
+                withAnimation(.easeIn(duration: 0.15)) { scale = 6.0 }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+
+
+                    loading = false
+                    scale = 1
+
+
+
+                }
+                    
+            
             }
         })
     }
@@ -394,6 +420,16 @@ extension View {
             }
         } else {
             self
+        }
+    }
+}
+
+extension View {
+    func animate(using animation: Animation = Animation.easeInOut(duration: 1), _ action: @escaping () -> Void) -> some View {
+        onAppear {
+            withAnimation(animation) {
+                action()
+            }
         }
     }
 }
