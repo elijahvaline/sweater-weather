@@ -9,13 +9,21 @@ import SwiftUI
 
 class Settings: ObservableObject {
     @Published var sweaterThreshhold:Int {
+    
         didSet {
             UserDefaults.standard.set(sweaterThreshhold, forKey: "threshhold")
+        }
+        
+    }
+    @Published var date:String {
+        didSet{
+            UserDefaults.standard.set(date, forKey: "date")
         }
     }
     
     init() {
-        self.sweaterThreshhold = UserDefaults.standard.object(forKey: "threshhold") as? Int ?? 60
+        self.sweaterThreshhold = UserDefaults.standard.object(forKey: "threshhold") as? Int ?? 57
+        self.date = UserDefaults.standard.object(forKey: "date") as? String ?? "0/0/0000"
     }
     
     func increment(){
@@ -26,4 +34,13 @@ class Settings: ObservableObject {
         
         sweaterThreshhold-=1
     }
+    func dater(){
+        let datey = Date()
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        let result = formatter.string(from: datey)
+        date = result
+    }
+    
+    
 }
