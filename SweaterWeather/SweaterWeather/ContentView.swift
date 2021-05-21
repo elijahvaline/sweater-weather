@@ -24,6 +24,7 @@ struct ContentView: View {
     @State var responsey = true
     @State var scale:CGFloat = 1.0
     @State var white = true
+    @State var op = 1.0
 
     
     
@@ -285,7 +286,10 @@ struct ContentView: View {
 //                Rectangle()
 //                    .frame(width: geometry.size.width, height: geometry.size.height)
                 
-               
+                Color("Grey")
+                    .isHidden(white)
+                    .opacity(op)
+                
                 
                 LinearGradient(gradient: Gradient(colors: [Color("MainColor1"), Color("MainColor2")]), startPoint: .topLeading, endPoint: .bottomTrailing)
                     .ignoresSafeArea()
@@ -294,7 +298,7 @@ struct ContentView: View {
 
                 Image(systemName: "smoke.fill")
                     .resizable()
-                    .foregroundColor(.white)
+                    .foregroundColor(Color("Grey"))
                     .frame(width: 200 * scale, height: 150 * scale)
                     .scaleEffect(scale)
                     .isHidden(!loading)
@@ -361,14 +365,17 @@ struct ContentView: View {
             
             DispatchQueue.main.asyncAfter(deadline: .now()) {
 //
-                withAnimation(.easeIn(duration: 0.15)) { scale = 6.0 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                withAnimation(.easeIn(duration: 0.2)) { scale = 6.0 }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
 
-
+                    white = false
                     loading = false
                     scale = 1
-
-
+//                    white = true
+                    
+                    withAnimation(.easeIn(duration: 0.08)) { op = 0 }
+                    
+                    
 
                 }
                     
