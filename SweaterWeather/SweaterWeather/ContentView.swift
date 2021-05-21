@@ -20,13 +20,14 @@ struct ContentView: View {
     @State var progress:Float = 1.0
     @ObservedObject private var locationManager = LocationManager()
     @ObservedObject private var settings = Settings()
-    @State var sweater:String = ""
+    @State var sweater:String = "Something random"
     @State var responsey = true
     @State var scale:CGFloat = 1.0
     @State var white = true
     @State var op = 1.0
 
     
+    @State var isDev = true
     
     var body: some View {
         ZStack{
@@ -45,11 +46,9 @@ struct ContentView: View {
                         .font(.system(size: 35))
                     
                     ScrollView {
-                        
-                        
                         GeometryReader { geo in
                             VStack{
-                                
+                            
                                 //
                                 HStack{
                                     Spacer()
@@ -269,14 +268,11 @@ struct ContentView: View {
                                 // Add stuff to the main scroll view here
                                 
                                 Spacer()
-                                
-                                
+                 
+                                RoundedRectangle(cornerRadius: 20.0).foregroundColor(.blue).frame(width: geometry.size.width * 0.9, height: 400, alignment: .center)
                             }
                         }
-                        
-                        
-                        
-                        
+
                         
                     }
                     
@@ -289,10 +285,12 @@ struct ContentView: View {
                 Color("Grey")
                     .isHidden(white)
                     .opacity(op)
+                    .isHidden(isDev)
                 
                 
                 LinearGradient(gradient: Gradient(colors: [Color("MainColor1"), Color("MainColor2")]), startPoint: .topLeading, endPoint: .bottomTrailing)
                     .ignoresSafeArea()
+                    .isHidden(isDev)
 
                     .isHidden(!loading)
 
@@ -302,6 +300,7 @@ struct ContentView: View {
                     .frame(width: 200 * scale, height: 150 * scale)
                     .scaleEffect(scale)
                     .isHidden(!loading)
+                    .isHidden(isDev)
 //
 //
              
