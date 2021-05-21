@@ -46,30 +46,37 @@ struct ContentView: View {
                         .font(.system(size: 35))
                     
                     ScrollView {
-                        GeometryReader { geo in
+
                             VStack{
-                            
+                                
                                 //
-                                HStack{
-                                    Spacer()
-                                    Text(self.sweater)
+                                GeometryReader { geo in
+                                    HStack{
+                                        Spacer()
                                         
-                                        //                                                .font(.system(size: max(1, (25 - abs(60-(geo.frame(in: .global).midY/1.5))))))
-                                        .font(.system(size: max(1, (25 - abs(((geo.frame(in: .global).midY - 91)/2))))))
-                                        .fontWeight(.medium)
-                                        .padding(.bottom, 50)
-                                        .padding(.top, 35)
-                                        .opacity(1.0 - (0.03 * abs(Double(geo.frame(in: .global).midY - 91))))
-                                    
-                                    Spacer()
+                                       
+                                            Text(self.sweater)
+                                            .font(.system(size: max(1, (25 - abs(((geo.frame(in: .global).midY - 91)/2))))))
+                                            .fontWeight(.medium)
+                                            .padding(.bottom, 50)
+                                            .padding(.top, 35)
+                                            .opacity(1.0 - (0.03 * abs(Double(geo.frame(in: .global).midY - 91))))
+                                                .frame(alignment: .center)
+                                        
+                                
+                                        Spacer()
+                                    }
                                     
                                 }
                                 
+                                Spacer().frame(height: 100)
+                               
                                 ZStack{
                                     RoundedRectangle(cornerRadius: 15)
                                         .gradientRec(start: .topTrailing, end: .bottomLeading, colors: [Color("MainColor1"), Color("MainColor2")])
                                         .frame(width: geometry.size.width*0.9, height: 200)
                                         .shadow(color: Color.black.opacity(0.2), radius: 5.0)
+                                    
                                     
                                     
                                     HStack{
@@ -268,10 +275,9 @@ struct ContentView: View {
                                 // Add stuff to the main scroll view here
                                 
                                 Spacer()
-                 
-                                RoundedRectangle(cornerRadius: 20.0).foregroundColor(.blue).frame(width: geometry.size.width * 0.9, height: 400, alignment: .center)
+                
                             }
-                        }
+                       // }
 
                         
                     }
