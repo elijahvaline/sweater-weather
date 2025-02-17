@@ -23,6 +23,7 @@ DerivedData/
 !default.perspectivev3
 Credentials.swift
 SweaterWeather/SweaterWeather/Credentials.swift
+*.xcconfig
 
 ## Obj-C/Swift specific
 *.hmap
