@@ -25,6 +25,8 @@ struct ContentView: View {
     @State var scale:CGFloat = 1.0
     @State var white = true
     @State var op = 1.0
+    @StateObject private var viewModel = WeatherViewModel()
+
 
     
     @State var isDev = true
@@ -36,17 +38,22 @@ struct ContentView: View {
         GeometryReader { geometry in
     
             ZStack{
-                Color("Grey")
-                    .edgesIgnoringSafeArea(.all)
-                
-                VStack(spacing: 5){
+                if(viewModel.isLoading){
+                    ProgressView("Fetching Weather...")
+                } else{
                     
-                    Image(systemName: "smoke.fill")
-                        .gradientForeground(colors: [Color("MainColor1"),Color("MainColor2")])
-                        .font(.system(size: 35))
                     
-                    ScrollView {
-
+                    Color("Grey")
+                        .edgesIgnoringSafeArea(.all)
+                    
+                    VStack(spacing: 5){
+                        
+                        Image(systemName: "smoke.fill")
+                            .gradientForeground(colors: [Color("MainColor1"),Color("MainColor2")])
+                            .font(.system(size: 35))
+                        
+                        ScrollView {
+                            
                             VStack{
                                 
                                 //
@@ -54,23 +61,23 @@ struct ContentView: View {
                                     HStack{
                                         Spacer()
                                         
-                                       
-                                            Text(self.sweater)
+                                        
+                                        Text(viewModel.sweaterRecommendation)
                                             .font(.system(size: max(1, (25 - abs(((geo.frame(in: .global).midY - 91)/2))))))
                                             .fontWeight(.medium)
                                             .padding(.bottom, 50)
                                             .padding(.top, 35)
                                             .opacity(1.0 - (0.03 * abs(Double(geo.frame(in: .global).midY - 91))))
-                                                .frame(alignment: .center)
+                                            .frame(alignment: .center)
                                         
-                                
+                                        
                                         Spacer()
                                     }
                                     
                                 }
                                 
                                 Spacer().frame(height: 100)
-                               
+                                
                                 ZStack{
                                     RoundedRectangle(cornerRadius: 15)
                                         .gradientRec(start: .topTrailing, end: .bottomLeading, colors: [Color("MainColor1"), Color("MainColor2")])
@@ -83,9 +90,7 @@ struct ContentView: View {
                                         
                                         VStack{
                                             
-                                            
-                                            
-                                            Text(String(sweaterFactor))
+                                            Text(String(viewModel.sweaterFactor))
                                                 .font(.system(size: 70))
                                                 .fontWeight(.semibold)
                                                 .frame(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
@@ -104,15 +109,15 @@ struct ContentView: View {
                                         
                                         VStack{
                                             
-                                            if (sweaterFactor - settings.sweaterThreshhold > 0){
-                                                Text("+" + String(sweaterFactor - settings.sweaterThreshhold))
+                                            if (viewModel.sweaterDifferential > 0){
+                                                Text("+" + String(viewModel.sweaterDifferential))
                                                     .font(.system(size: 70))
                                                     .fontWeight(.semibold)
                                                     .frame(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                                                     .foregroundColor(.white)
                                             }
                                             else {
-                                                Text(String(sweaterFactor - settings.sweaterThreshhold))
+                                                Text(String(viewModel.sweaterDifferential))
                                                     .font(.system(size: 70))
                                                     .fontWeight(.semibold)
                                                     .frame(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
@@ -138,7 +143,7 @@ struct ContentView: View {
                                     VStack{
                                         
                                         
-                                        Text(String(settings.sweaterThreshhold))
+                                        Text(String(viewModel.sweaterThreshold))
                                             .font(.system(size: 70))
                                             .fontWeight(.semibold)
                                             .frame(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
@@ -244,86 +249,42 @@ struct ContentView: View {
                                     
                                 }.padding(.top, 10)
                                 
-                                
-                                //                                Divider().padding(.vertical, 20)
-                                //
-                                //                                HStack(spacing: geometry.size.width * 0.05){
-                                //
-                                //                                    ZStack{
-                                //                                        RoundedRectangle(cornerRadius: 15.0)
-                                //                                            .foregroundColor(Color("Foreground"))
-                                //                                            .shadow(color: Color.black.opacity(0.1), radius: 5.0)
-                                //
-                                //
-                                //                                    }.frame(width: geometry.size.width * 0.425, height: geometry.size.width * 0.425)
-                                //
-                                //                                    ZStack{
-                                //                                        RoundedRectangle(cornerRadius: 15.0)
-                                //                                            .foregroundColor(Color("Foreground"))
-                                //                                            .shadow(color: Color.black.opacity(0.1), radius: 5.0)
-                                //
-                                //                                    }.frame(width: geometry.size.width * 0.425, height: geometry.size.width * 0.425)
-                                //
-                                //
-                                //
-                                //
-                                //
-                                //
-                                //                                }.padding(.top, 10)
-                                
-
-                                // Add stuff to the main scroll view here
-                                
                                 Spacer()
-                
+                                
                             }
-                       // }
-
+                        }
                         
-                    }
+                        
+                    }.frame(width: geometry.size.width, height: geometry.size.height)
+                    
+                    Color("Grey")
+                        .isHidden(white)
+                        .opacity(op)
+                        .isHidden(isDev)
                     
                     
-                }.frame(width: geometry.size.width, height: geometry.size.height)
-                
-//                Rectangle()
-//                    .frame(width: geometry.size.width, height: geometry.size.height)
-                
-                Color("Grey")
-                    .isHidden(white)
-                    .opacity(op)
-                    .isHidden(isDev)
-                
-                
-                LinearGradient(gradient: Gradient(colors: [Color("MainColor1"), Color("MainColor2")]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                    .ignoresSafeArea()
-                    .isHidden(isDev)
+                    LinearGradient(gradient: Gradient(colors: [Color("MainColor1"), Color("MainColor2")]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                        .ignoresSafeArea()
+                        .isHidden(isDev)
+                    
+                        .isHidden(!loading)
+                    
+                    Image(systemName: "smoke.fill")
+                        .resizable()
+                        .foregroundColor(Color("Grey"))
+                        .frame(width: 200 * scale, height: 150 * scale)
+                        .scaleEffect(scale)
+                        .isHidden(!loading)
+                        .isHidden(isDev)
+                }
 
-                    .isHidden(!loading)
-
-                Image(systemName: "smoke.fill")
-                    .resizable()
-                    .foregroundColor(Color("Grey"))
-                    .frame(width: 200 * scale, height: 150 * scale)
-                    .scaleEffect(scale)
-                    .isHidden(!loading)
-                    .isHidden(isDev)
-//
-//
-             
             }
             .onReceive(locationManager.$location, perform: { newLocation in
                 if let newLocation = newLocation {
                     reload(location: newLocation.coordinate)
                 }
                 
-               
             })
-            
-        
-        
-            
-            
-            
           }
         }
     }
@@ -334,59 +295,60 @@ struct ContentView: View {
     func reload(location: CLLocationCoordinate2D){
         
         
-        ServerUtils.getWeather(laty:location.latitude, lony:location.longitude, returnWith:  { response, success in
-            if (!success) {
-                
-                // Show error UI here
-                print("OH NO IT FAILED")
-                return;
-            }
-            
-            let datey = Date()
-            let formatter = DateFormatter()
-            formatter.dateStyle = .short
-            let result = formatter.string(from: datey)
-            
-            let totalWeather:weather = response!
-            sweaterFactor = SweaterFunctions.sweaterFactor(currentWeather: totalWeather)
-            lon = totalWeather.lon
-            lat = totalWeather.lat
-            
-            
-            if (sweaterFactor <= settings.sweaterThreshhold){
-                self.sweater = "Wear a sweater."
-                
-            }
-            else{
-                self.sweater = "Don't wear a sweater."
-            }
-            
-            
-            if (settings.date == result){
-                responsey = false
-            }
-            // Cant modify state variable directly multiple times without swiftui class
-            
-            
-            DispatchQueue.main.asyncAfter(deadline: .now()) {
+        viewModel.getWeather(lat: location.latitude, lon: location.longitude)
+//            .getWeather(laty:location.latitude, lony:location.longitude, returnWith:  { response, success in
+//            if (!success) {
+//                
+//                // Show error UI here
+//                print("OH NO IT FAILED")
+//                return;
+//            }
+//            
+//            let datey = Date()
+//            let formatter = DateFormatter()
+//            formatter.dateStyle = .short
+//            let result = formatter.string(from: datey)
+//            
+//            let totalWeather:weather = response!
+//            sweaterFactor = SweaterFunctions.sweaterFactor(currentWeather: totalWeather)
+//            lon = totalWeather.lon
+//            lat = totalWeather.lat
+//            
+//            
+//            if (sweaterFactor <= settings.sweaterThreshhold){
+//                self.sweater = "Wear a sweater."
+//                
+//            }
+//            else{
+//                self.sweater = "Don't wear a sweater."
+//            }
+//            
+//            
+//            if (settings.date == result){
+//                responsey = false
+//            }
+//            // Cant modify state variable directly multiple times without swiftui class
+//            
+//            
+//            DispatchQueue.main.asyncAfter(deadline: .now()) {
+////
+//                withAnimation(.easeIn(duration: 0.2)) { scale = 6.0 }
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
 //
-                withAnimation(.easeIn(duration: 0.2)) { scale = 6.0 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-
-                    white = false
-                    loading = false
-                    scale = 1
-//                    white = true
-                    
-                    withAnimation(.easeIn(duration: 0.08)) { op = 0 }
-                    
-                    
-
-                }
-                    
-            
-            }
-        })
+//                    white = false
+//                    loading = false
+//                    scale = 1
+////                    white = true
+//                    
+//                    withAnimation(.easeIn(duration: 0.08)) { op = 0 }
+//                    
+//                    
+//
+//                }
+//                    
+//            
+//            }
+//        })
     }
 }
 

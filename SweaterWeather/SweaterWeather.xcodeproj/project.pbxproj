@@ -3,40 +3,35 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		802098D926584D8100E1CE60 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802098D826584D8100E1CE60 /* Credentials.swift */; };
 		B602E0BA262C8C830080F4F0 /* SweaterWeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B602E0B9262C8C830080F4F0 /* SweaterWeatherApp.swift */; };
-		B602E0BC262C8C830080F4F0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B602E0BB262C8C830080F4F0 /* ContentView.swift */; };
 		B602E0BE262C8C870080F4F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B602E0BD262C8C870080F4F0 /* Assets.xcassets */; };
 		B602E0C1262C8C870080F4F0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B602E0C0262C8C870080F4F0 /* Preview Assets.xcassets */; };
-		B61CC74F2638C41E00215015 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61CC74E2638C41E00215015 /* LocationManager.swift */; };
-		B63419B3262CEC45000F4BB5 /* ServerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63419B2262CEC45000F4BB5 /* ServerUtils.swift */; };
-		B69F03742645BCF900D3C041 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F03732645BCF900D3C041 /* Settings.swift */; };
-		B6ED2660263A0F76005FEA5C /* SweaterFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ED265F263A0F76005FEA5C /* SweaterFunctions.swift */; };
 		B6ED2662263A1B31005FEA5C /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ED2661263A1B30005FEA5C /* ActivityIndicatorView.swift */; };
 		B6ED2668263A1B93005FEA5C /* ArcsIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ED2667263A1B93005FEA5C /* ArcsIndicatorView.swift */; };
 		B6FABD4C263E05BE008B89F5 /* CircleProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FABD4B263E05BE008B89F5 /* CircleProgress.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		802098D826584D8100E1CE60 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		B602E0B6262C8C830080F4F0 /* SweaterWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SweaterWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B602E0B9262C8C830080F4F0 /* SweaterWeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweaterWeatherApp.swift; sourceTree = "<group>"; };
-		B602E0BB262C8C830080F4F0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B602E0BD262C8C870080F4F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B602E0C0262C8C870080F4F0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B602E0C2262C8C870080F4F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B61CC74E2638C41E00215015 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		B63419B2262CEC45000F4BB5 /* ServerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerUtils.swift; sourceTree = "<group>"; };
-		B69F03732645BCF900D3C041 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		B6ED265F263A0F76005FEA5C /* SweaterFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweaterFunctions.swift; sourceTree = "<group>"; };
 		B6ED2661263A1B30005FEA5C /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		B6ED2667263A1B93005FEA5C /* ArcsIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcsIndicatorView.swift; sourceTree = "<group>"; };
 		B6FABD4B263E05BE008B89F5 /* CircleProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgress.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		B69760282D6161D3007C0EF5 /* Models */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Models; sourceTree = "<group>"; };
+		B697602C2D6161F9007C0EF5 /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
+		B697602D2D616265007C0EF5 /* Services */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Services; sourceTree = "<group>"; };
+		B697602E2D61B5AF007C0EF5 /* ViewModels */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ViewModels; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		B602E0B3262C8C830080F4F0 /* Frameworks */ = {
@@ -68,18 +63,16 @@
 		B602E0B8262C8C830080F4F0 /* SweaterWeather */ = {
 			isa = PBXGroup;
 			children = (
+				B697602E2D61B5AF007C0EF5 /* ViewModels */,
+				B697602D2D616265007C0EF5 /* Services */,
+				B697602C2D6161F9007C0EF5 /* Views */,
+				B69760282D6161D3007C0EF5 /* Models */,
 				B602E0B9262C8C830080F4F0 /* SweaterWeatherApp.swift */,
-				B602E0BB262C8C830080F4F0 /* ContentView.swift */,
-				B69F03732645BCF900D3C041 /* Settings.swift */,
 				B602E0BD262C8C870080F4F0 /* Assets.xcassets */,
 				B602E0C2262C8C870080F4F0 /* Info.plist */,
 				B602E0BF262C8C870080F4F0 /* Preview Content */,
-				B63419B2262CEC45000F4BB5 /* ServerUtils.swift */,
-				802098D826584D8100E1CE60 /* Credentials.swift */,
-				B61CC74E2638C41E00215015 /* LocationManager.swift */,
 				B6ED2661263A1B30005FEA5C /* ActivityIndicatorView.swift */,
 				B6ED2667263A1B93005FEA5C /* ArcsIndicatorView.swift */,
-				B6ED265F263A0F76005FEA5C /* SweaterFunctions.swift */,
 				B6FABD4B263E05BE008B89F5 /* CircleProgress.swift */,
 			);
 			path = SweaterWeather;
@@ -107,6 +100,12 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				B69760282D6161D3007C0EF5 /* Models */,
+				B697602C2D6161F9007C0EF5 /* Views */,
+				B697602D2D616265007C0EF5 /* Services */,
+				B697602E2D61B5AF007C0EF5 /* ViewModels */,
 			);
 			name = SweaterWeather;
 			productName = SweaterWeather;
@@ -162,15 +161,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B602E0BC262C8C830080F4F0 /* ContentView.swift in Sources */,
 				B602E0BA262C8C830080F4F0 /* SweaterWeatherApp.swift in Sources */,
-				B61CC74F2638C41E00215015 /* LocationManager.swift in Sources */,
-				802098D926584D8100E1CE60 /* Credentials.swift in Sources */,
 				B6ED2668263A1B93005FEA5C /* ArcsIndicatorView.swift in Sources */,
-				B69F03742645BCF900D3C041 /* Settings.swift in Sources */,
-				B6ED2660263A0F76005FEA5C /* SweaterFunctions.swift in Sources */,
 				B6FABD4C263E05BE008B89F5 /* CircleProgress.swift in Sources */,
-				B63419B3262CEC45000F4BB5 /* ServerUtils.swift in Sources */,
 				B6ED2662263A1B31005FEA5C /* ActivityIndicatorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

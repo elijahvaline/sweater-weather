@@ -8,6 +8,10 @@
 import SwiftUI
 
 class Settings: ObservableObject {
+    
+    static let sharedSettings = Settings()
+    
+    
     @Published var sweaterThreshhold:Int {
     
         didSet {
